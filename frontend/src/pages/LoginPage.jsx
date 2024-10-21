@@ -6,10 +6,18 @@ const LoginPage = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const {login , isLoggingIn} = useAuthStore();
+    const [loading,setLoading]=useState(false);
     const handleLogin = (e)=>{
         e.preventDefault();
-        console.log(email,password);
-        login({email,password});
+
+        setLoading(true)
+        try {
+          login({email,password});
+        } catch (error) {
+          console.log(error)
+        }finally{
+          setLoading(false)
+        }
     }
 
     return (
@@ -67,7 +75,7 @@ const LoginPage = () => {
                             '
                                 disabled={isLoggingIn}
                             >
-                                {isLoggingIn ? "Loading..." : "Login"}
+                                {loading ? "Loggin in" : "Login"}
                             </button>
               </form>
     

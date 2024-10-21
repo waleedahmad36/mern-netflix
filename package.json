@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon backend/server.js",
-  "start": "cross-env NODE_ENV=production node backend/server.js",
+    "start": "cross-env NODE_ENV=production node backend/server.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
+    "cron-jobs": "^1.0.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

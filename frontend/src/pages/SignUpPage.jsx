@@ -10,11 +10,19 @@ const SignUpPage = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
     const {signup , isSigningUp}=useAuthStore();
+    const [loading,setLoading] = useState(false)
    
 
     const handleSignup=(e)=>{
        e.preventDefault();
+       setLoading(true);
+       try {
         signup({email,username,password});
+       } catch (error) {
+        console.log(error);
+       }finally{
+        setLoading(false);
+       }
     }
   return (
     <div className="h-screen w-full hero-bg">
@@ -88,8 +96,7 @@ const SignUpPage = () => {
 						'
 							disabled={isSigningUp}
 						>
-                            SignUp
-							{isSigningUp ? "Loading..." : "Sign Up"} 
+							{loading ? "Signing up" : "Sign Up"} 
 						</button>
           </form>
 
